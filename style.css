@@ -1,0 +1,124 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background: #0f172a;
+  color: #e5e7eb;
+}
+
+/* Header */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 60px;
+}
+
+header img {
+  width: 120px;
+}
+
+nav a {
+  color: #e5e7eb;
+  margin-left: 20px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a:hover {
+  color: #22c55e;
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  margin-top: 80px;
+}
+
+.hero h1 {
+  font-size: 60px;
+  color: #22c55e;
+}
+
+.hero p {
+  margin-top: 10px;
+  font-size: 20px;
+  color: #94a3b8;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 15px 30px;
+  background: linear-gradient(90deg, #22c55e, #3b82f6);
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 8px;
+}
+
+/* Mission Cards */
+.missions {
+  padding: 60px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.card {
+  background: #020617;
+  padding: 25px;
+  border-radius: 12px;
+  border: 1px solid #1e293b;
+}
+
+.card h3 {
+  color: #22c55e;
+}
+
+.card p {
+  margin: 10px 0;
+  color: #94a3b8;
+}
+
+/* Form */
+form {
+  max-width: 500px;
+  margin: 60px auto;
+  background: #020617;
+  padding: 30px;
+  border-radius: 12px;
+}
+
+input, textarea {
+  width: 100%;
+  margin-top: 10px;
+  padding: 12px;
+  background: #0f172a;
+  border: 1px solid #1e293b;
+  color: white;
+  border-radius: 6px;
+}
+
+textarea {
+  resize: none;
+  height: 100px;
+}
+
+button {
+  width: 100%;
+  margin-top: 20px;
+  padding: 14px;
+  background: #22c55e;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+.btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #22c55e;
+}
