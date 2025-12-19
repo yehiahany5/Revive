@@ -1,124 +1,147 @@
+/* 1. Global Reset & Body */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  text-transform: uppercase;
 }
 
 body {
-  background: #0f172a;
-  color: #e5e7eb;
+  background: #020617;
+  color: #f8fafc;
+  padding-top: 100px;
+  overflow-x: hidden;
 }
 
-/* Header */
-header {
+/* 2. Professional Gaming Header with HUD Effects */
+.banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 90px;
+  background: rgba(2, 6, 23, 0.9); 
+  backdrop-filter: blur(8px);
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 20px 60px;
+  justify-content: center;
+  padding: 0 40px;
+  border-bottom: 2px solid #1e293b;
+  z-index: 1000;
+  overflow: hidden; /* Keeps scanline inside banner */
 }
 
-header img {
-  width: 120px;
+/* The Scanning HUD Animation */
+.scanline {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(34, 197, 94, 0.05),
+    rgba(34, 197, 94, 0.2),
+    rgba(34, 197, 94, 0.05),
+    transparent
+  );
+  animation: scan 4s linear infinite;
+  pointer-events: none; /* Allows clicking through it */
 }
 
-nav a {
-  color: #e5e7eb;
-  margin-left: 20px;
+@keyframes scan {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* 3. Logo & Navigation */
+.logo-container {
+  position: absolute; 
+  left: 40px;         
+  display: flex;
+  align-items: center;
+  z-index: 2;
+}
+
+.logo-container img {
+  height: 65px;
+  width: auto;
+  filter: drop-shadow(0 0 5px rgba(34, 197, 94, 0.3));
+}
+
+.button-group {
+  display: flex;
+  gap: 5px;
+  z-index: 2;
+}
+
+/* 4. Square Gaming Buttons */
+.btn {
+  display: inline-block;
+  padding: 12px 28px;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 800;
+  letter-spacing: 2px;
+  font-size: 13px;
+  border-radius: 0; 
+  transition: all 0.2s ease;
+  cursor: pointer;
 }
 
-nav a:hover {
+.btn-gaming {
+  color: #94a3b8;
+  background: rgba(30, 41, 59, 0.5);
+  border: 1px solid #334155;
+}
+
+.btn-gaming:hover {
+  background: #0f172a; /* Darker background */
   color: #22c55e;
+  border-color: #22c55e;
+  box-shadow: inset 0 0 15px rgba(34, 197, 94, 0.2);
 }
 
-/* Hero */
+/* Main Action Button */
+.btn-action {
+  margin-top: 40px;
+  background: #22c55e;
+  color: #020617;
+  border: none;
+  box-shadow: 4px 4px 0px #166534; /* Gaming "shadow" edge */
+}
+
+.btn-action:hover {
+  background: #166534;
+  color: white;
+  transform: translate(2px, 2px);
+  box-shadow: 0px 0px 0px #166534;
+}
+
+/* 5. Hero Section */
 .hero {
+  height: calc(100vh - 90px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  margin-top: 80px;
+  background: 
+    linear-gradient(rgba(2, 6, 23, 0.8), rgba(2, 6, 23, 0.8)),
+    url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070'); /* Gaming room bg */
+  background-size: cover;
 }
 
 .hero h1 {
-  font-size: 60px;
-  color: #22c55e;
+  font-size: 100px;
+  font-weight: 900;
+  color: white;
+  letter-spacing: 15px;
+  text-shadow: 0 0 30px rgba(34, 197, 94, 0.5);
 }
 
 .hero p {
-  margin-top: 10px;
   font-size: 20px;
   color: #94a3b8;
-}
-
-.btn {
-  display: inline-block;
-  margin-top: 30px;
-  padding: 15px 30px;
-  background: linear-gradient(90deg, #22c55e, #3b82f6);
-  color: black;
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 8px;
-}
-
-/* Mission Cards */
-.missions {
-  padding: 60px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
-}
-
-.card {
-  background: #020617;
-  padding: 25px;
-  border-radius: 12px;
-  border: 1px solid #1e293b;
-}
-
-.card h3 {
-  color: #22c55e;
-}
-
-.card p {
-  margin: 10px 0;
-  color: #94a3b8;
-}
-
-/* Form */
-form {
-  max-width: 500px;
-  margin: 60px auto;
-  background: #020617;
-  padding: 30px;
-  border-radius: 12px;
-}
-
-input, textarea {
-  width: 100%;
-  margin-top: 10px;
-  padding: 12px;
-  background: #0f172a;
-  border: 1px solid #1e293b;
-  color: white;
-  border-radius: 6px;
-}
-
-textarea {
-  resize: none;
-  height: 100px;
-}
-
-button {
-  width: 100%;
-  margin-top: 20px;
-  padding: 14px;
-  background: #22c55e;
-  border: none;
-  font-weight: bold;
-  cursor: pointer;
-}
-.btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px #22c55e;
+  letter-spacing: 5px;
 }
