@@ -14,9 +14,41 @@
   <h1>Mission Registration</h1>
   <p>You are about to join a real-life mission.</p>
 
-  <a class="btn" href=https://docs.google.com/forms/d/e/1FAIpQLSd60y7uGN6h2gX8GCAsarTyBfB_4rs6t8FWknym_HvUPNAPIA/viewform?usp=dialog target="_blank">
-    Start Mission
-  </a>
+<form action="send_mission.php" method="POST" class="mission-form">
+    
+    <div class="input-group">
+        <label for="fullname">Full Name</label>
+        <input type="text" id="fullname" name="full_name" placeholder="Enter your full name" required>
+    </div>
+
+    <div class="input-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="example@email.com" required>
+    </div>
+
+    <div class="input-group">
+        <label for="age">Age</label>
+        <input type="number" id="age" name="age" placeholder="Your age" required>
+    </div>
+
+    <div class="input-group">
+        <label for="mobile">Mobile Number</label>
+        <input type="tel" id="mobile" name="mobile" placeholder="+20 1xxxxxxxxx" required>
+    </div>
+
+    <div class="input-group">
+        <label for="location">Location</label>
+        <input type="text" id="location" name="location" placeholder="e.g. Alexandria, Egypt" required>
+    </div>
+
+    <div class="input-group">
+        <label for="reason">Why do you want to join this mission?</label>
+        <textarea id="reason" name="reason" rows="4" placeholder="Tell us your motivation..." required></textarea>
+    </div>
+
+    <button type="submit" class="btn">Submit Application</button>
+
+</form>
 </section>
 
 </body>
