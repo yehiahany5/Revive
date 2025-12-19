@@ -1,124 +1,135 @@
+/* 1. Global Reset & Body */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  text-transform: uppercase; /* Common in gaming UI */
 }
 
 body {
-  background: #0f172a;
-  color: #e5e7eb;
+  background: #020617; /* Deeper dark blue-black */
+  color: #f8fafc;
+  padding-top: 100px; 
 }
 
-/* Header */
-header {
+/* 2. Professional Gaming Header */
+.banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 90px;
+  background: rgba(2, 6, 23, 0.85); 
+  backdrop-filter: blur(8px);
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 20px 60px;
+  justify-content: center;
+  padding: 0 40px;
+  border-bottom: 2px solid #1e293b;
+  z-index: 1000;
 }
 
-header img {
-  width: 120px;
+.logo-container {
+  position: absolute; 
+  left: 40px;         
+  display: flex;
+  align-items: center;
 }
 
-nav a {
-  color: #e5e7eb;
-  margin-left: 20px;
+.logo-container img {
+  height: 70px;
+  width: auto;
+  object-fit: contain;
+}
+
+.button-group {
+  display: flex;
+  gap: 2px; /* Small gap for a modular look */
+}
+
+/* 3. Square Gaming Buttons */
+.btn {
+  display: inline-block;
+  padding: 14px 28px;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 800;
+  letter-spacing: 2px;
+  font-size: 13px;
+  border-radius: 0; /* Sharp square corners */
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  border: none;
 }
 
-nav a:hover {
-  color: #22c55e;
+/* Header Buttons - Dark/Transparent to Solid Darker */
+.btn-gaming {
+  color: #94a3b8;
+  background: rgba(255, 255, 255, 0.03);
 }
 
-/* Hero */
+.btn-gaming:hover {
+  background: #1e293b; /* Gets darker on hover */
+  color: #22c55e; /* Green accent common in Revive logo */
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Main Action Button - Bold Gaming Style */
+.btn-action {
+  margin-top: 40px;
+  background: #22c55e;
+  color: #020617;
+  border-left: 4px solid #15803d; /* "Shadow" edge */
+}
+
+.btn-action:hover {
+  background: #166534; /* Darkens on hover */
+  color: white;
+  transform: scale(1.05);
+}
+
+/* 4. Hero Section */
 .hero {
+  height: calc(100vh - 90px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  margin-top: 80px;
+  background: radial-gradient(circle, rgba(34, 197, 94, 0.1) 0%, rgba(2, 6, 23, 1) 70%);
 }
 
 .hero h1 {
-  font-size: 60px;
-  color: #22c55e;
+  font-size: 80px;
+  font-weight: 900;
+  color: white;
+  letter-spacing: 10px;
+  text-shadow: 0 0 20px rgba(34, 197, 94, 0.4);
 }
 
 .hero p {
-  margin-top: 10px;
-  font-size: 20px;
-  color: #94a3b8;
+  margin-top: 5px;
+  font-size: 18px;
+  color: #64748b;
+  letter-spacing: 4px;
 }
 
-.btn {
-  display: inline-block;
-  margin-top: 30px;
-  padding: 15px 30px;
-  background: linear-gradient(90deg, #22c55e, #3b82f6);
-  color: black;
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 8px;
-}
-
-/* Mission Cards */
+/* 5. Mission Cards (Integrated Gaming Style) */
 .missions {
   padding: 60px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
 }
 
 .card {
-  background: #020617;
-  padding: 25px;
-  border-radius: 12px;
-  border: 1px solid #1e293b;
-}
-
-.card h3 {
-  color: #22c55e;
-}
-
-.card p {
-  margin: 10px 0;
-  color: #94a3b8;
-}
-
-/* Form */
-form {
-  max-width: 500px;
-  margin: 60px auto;
-  background: #020617;
-  padding: 30px;
-  border-radius: 12px;
-}
-
-input, textarea {
-  width: 100%;
-  margin-top: 10px;
-  padding: 12px;
   background: #0f172a;
-  border: 1px solid #1e293b;
-  color: white;
-  border-radius: 6px;
+  padding: 30px;
+  border-radius: 0; /* Square cards */
+  border-top: 3px solid #1e293b;
+  transition: 0.3s;
 }
 
-textarea {
-  resize: none;
-  height: 100px;
-}
-
-button {
-  width: 100%;
-  margin-top: 20px;
-  padding: 14px;
-  background: #22c55e;
-  border: none;
-  font-weight: bold;
-  cursor: pointer;
-}
-.btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px #22c55e;
+.card:hover {
+  border-top: 3px solid #22c55e;
+  background: #1e293b;
 }
