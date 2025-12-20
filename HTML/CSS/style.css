@@ -18,8 +18,11 @@
 body {
   background: var(--dark-bg);
   color: #f8fafc;
-  padding-top: 110px; /* Space for the fixed HUD header */
+  padding-top: 110px; 
   overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 /* 2. Professional Gaming Header (HUD) */
@@ -40,21 +43,13 @@ body {
   overflow: hidden;
 }
 
-/* The Scanning HUD Animation */
 .scanline {
   position: absolute;
   top: 0;
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(34, 197, 94, 0.05),
-    rgba(34, 197, 94, 0.2),
-    rgba(34, 197, 94, 0.05),
-    transparent
-  );
+  background: linear-gradient(90deg, transparent, rgba(34, 197, 94, 0.05), rgba(34, 197, 94, 0.2), rgba(34, 197, 94, 0.05), transparent);
   animation: scan 4s linear infinite;
   pointer-events: none;
 }
@@ -130,6 +125,7 @@ body {
   margin: 0 auto;
   padding: 40px 20px;
   text-align: center;
+  flex-grow: 1;
 }
 
 .mission-grid {
@@ -148,9 +144,7 @@ body {
   transition: border 0.3s ease;
 }
 
-.card:hover {
-  border-color: var(--neon-green);
-}
+.card:hover { border-color: var(--neon-green); }
 
 .card h3 {
   color: var(--neon-green);
@@ -167,14 +161,9 @@ body {
   letter-spacing: 1px;
 }
 
-.card span {
-    color: #f8fafc;
-    font-weight: bold;
-}
-
 /* 6. Hero & Glitch Text Sections */
 .hero {
-  min-height: calc(100vh - 110px);
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -193,23 +182,18 @@ body {
   color: white;
   letter-spacing: 8px;
   position: relative;
-  text-shadow: 0.05em 0 0 var(--glitch-red), 
-               -0.025em -0.05em 0 var(--neon-green);
+  text-shadow: 0.05em 0 0 var(--glitch-red), -0.025em -0.05em 0 var(--neon-green);
   animation: glitch 1.5s infinite;
   margin-bottom: 10px;
 }
 
 @keyframes glitch {
   0% { text-shadow: 0.05em 0 0 var(--glitch-red), -0.05em -0.025em 0 var(--neon-green); }
-  14% { text-shadow: 0.05em 0 0 var(--glitch-red), -0.05em -0.025em 0 var(--neon-green); }
-  15% { text-shadow: -0.05em -0.025em 0 var(--glitch-red), 0.025em 0.025em 0 var(--neon-green); }
-  49% { text-shadow: -0.05em -0.025em 0 var(--glitch-red), 0.025em 0.025em 0 var(--neon-green); }
   50% { text-shadow: 0.025em 0.05em 0 var(--glitch-red), 0.05em 0 0 var(--neon-green); }
-  99% { text-shadow: 0.025em 0.05em 0 var(--glitch-red), 0.05em 0 0 var(--neon-green); }
   100% { text-shadow: -0.025em 0 0 var(--glitch-red), -0.025em -0.025em 0 var(--neon-green); }
 }
 
-/* 7. Gaming Form Styling (New) */
+/* 7. Gaming Form Styling */
 .mission-form {
   background: rgba(15, 23, 42, 0.8);
   border: 1px solid var(--border-color);
@@ -221,11 +205,6 @@ body {
   border-top: 4px solid var(--neon-green);
 }
 
-.input-group {
-  margin-bottom: 20px;
-  text-align: left;
-}
-
 .input-group label {
   display: block;
   color: var(--neon-green);
@@ -235,35 +214,96 @@ body {
   letter-spacing: 2px;
 }
 
-.input-group input, 
-.input-group textarea {
+.input-group input, .input-group textarea {
   width: 100%;
   padding: 12px;
   background: rgba(30, 41, 59, 0.5);
   border: 1px solid var(--border-color);
   color: white;
-  border-radius: 0;
-  transition: all 0.3s ease;
   outline: none;
 }
 
-.input-group input:focus, 
-.input-group textarea:focus {
-  border-color: var(--neon-green);
-  background: rgba(34, 197, 94, 0.05);
-  box-shadow: 0 0 10px rgba(34, 197, 94, 0.2);
+/* 8. Footer HUD Styling - Split Left/Right & Glitch Extras */
+.footer-hud {
+    position: relative;
+    background: rgba(2, 6, 23, 0.98);
+    border-top: 2px solid var(--border-color);
+    padding: 25px 60px; /* Slimmer height */
+    margin-top: auto;
+    overflow: hidden;
 }
 
-.flex-row {
-  display: flex;
-  gap: 15px;
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between; /* Pushes contact left, credits right */
+    align-items: center;            /* Centers them vertically */
+    gap: 20px;
 }
 
-/* 8. Responsive Fixes */
+.contact-links {
+    display: flex;
+    flex-direction: column;    /* Stack Phone over Insta */
+    gap: 12px;
+    text-align: left;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--slate-text);
+    transition: 0.2s;
+    font-size: 12px;
+}
+
+.contact-item img {
+    width: 16px;
+    height: 16px;
+    filter: invert(1) sepia(1) saturate(5) hue-rotate(90deg); 
+    transition: 0.2s;
+}
+
+/* HOVER EFFECT: Glitch */
+.contact-item:hover {
+    color: #fff;
+    text-shadow: 0.05em 0 0 var(--glitch-red), -0.05em -0.025em 0 var(--neon-green);
+    animation: glitch 0.3s infinite;
+}
+
+.contact-item:hover img {
+    filter: invert(1) brightness(2); 
+    transform: scale(1.1);
+}
+
+.credits {
+    text-align: right;
+}
+
+.dev-tag {
+    color: var(--neon-green);
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+.names {
+    font-weight: 900;
+    font-size: 14px;        
+    margin: 4px 0;
+    color: white;
+}
+
+.copyright {
+    font-size: 9px;
+    color: #334155;
+}
+
+/* 9. Responsive Fixes */
 @media (max-width: 768px) {
   .logo-container { position: static; margin-bottom: 15px; }
   .banner { height: auto; flex-direction: column; padding: 20px; }
-  .glitch-text { font-size: 35px; }
-  .flex-row { flex-direction: column; gap: 0; }
-  .mission-form { padding: 20px; }
+  .footer-container { flex-direction: column; text-align: center; }
+  .contact-links, .credits { text-align: center; align-items: center; }
 }
