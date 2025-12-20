@@ -62,6 +62,14 @@
             </div>
         </div>
     </footer>
-
+<script>
+    // Check if the URL has ?status=success
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('status') === 'success') {
+        alert(">> MISSION SECURED: DATA ENCRYPTED AND SENT TO HQ.");
+        // Optional: Clean the URL so the alert doesn't pop up on refresh
+        window.history.replaceState({}, document.title, "/" + window.location.pathname.split("/").pop());
+    }
+</script>
 </body>
 </html>
