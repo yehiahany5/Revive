@@ -1,52 +1,66 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Register | Revive</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="CSS/style.css">
 </head>
 <body>
 
-<header>
-  <img src="images/logo.png">
+<header class="banner">
+  <div class="scanline"></div> 
+  <div class="logo-container">
+    <img src="Images/logo2.png" alt="Revive Logo">
+  </div>
+  <nav class="button-group">
+    <a href="index.html" class="btn btn-gaming">Home</a>
+    <a href="missions.html" class="btn btn-gaming">Missions</a>
+  </nav>
 </header>
 
 <section class="hero">
-  <h1>Mission Registration</h1>
-  <p>You are about to join a real-life mission.</p>
+  <div class="hero-header">
+    <h1 class="glitch-text">Join Mission</h1>
+    <p>SECURE ENCRYPTED CHANNEL // DATA ENTRY REQUIRED</p>
+  </div>
 
-<form action="send_mission.php" method="POST" class="mission-form">
+  <form action="send_mission.php" method="POST" class="mission-form">
     
     <div class="input-group">
         <label for="fullname">Full Name</label>
-        <input type="text" id="fullname" name="full_name" placeholder="Enter your full name" required>
+        <input type="text" id="fullname" name="full_name" placeholder="[ENTER OPERATOR NAME]" required>
     </div>
 
     <div class="input-group">
         <label for="email">Email Address</label>
-        <input type="email" id="email" name="email" placeholder="example@email.com" required>
+        <input type="email" id="email" name="email" placeholder="[EMAIL@PROTOCOL.COM]" required>
     </div>
 
     <div class="input-group">
-        <label for="age">Age</label>
-        <input type="number" id="age" name="age" placeholder="Your age" required>
-    </div>
-
-    <div class="input-group">
-        <label for="mobile">Mobile Number</label>
-        <input type="tel" id="mobile" name="mobile" placeholder="+20 1xxxxxxxxx" required>
+        <div class="flex-row">
+            <div style="flex: 1;">
+                <label for="age">Age</label>
+                <input type="number" id="age" name="age" placeholder="##" required>
+            </div>
+            <div style="flex: 2;">
+                <label for="mobile">Mobile Number</label>
+                <input type="tel" id="mobile" name="mobile" placeholder="+20 XXX XXX XXXX" required>
+            </div>
+        </div>
     </div>
 
     <div class="input-group">
         <label for="location">Location</label>
-        <input type="text" id="location" name="location" placeholder="e.g. Alexandria, Egypt" required>
+        <input type="text" id="location" name="location" placeholder="GEOGRAPHIC COORDINATES" required>
     </div>
 
     <div class="input-group">
-        <label for="reason">Why do you want to join this mission?</label>
-        <textarea id="reason" name="reason" rows="4" placeholder="Tell us your motivation..." required></textarea>
+        <label for="reason">Mission Motivation</label>
+        <textarea id="reason" name="reason" rows="4" placeholder="STATE YOUR OBJECTIVES..." required></textarea>
     </div>
 
-    <button type="submit" class="btn">Submit Application</button>
+    <button type="submit" class="btn btn-action">Submit Application</button>
 
 </form>
 </section>

@@ -1,4 +1,4 @@
-/* 1. Global Reset & Body */
+/* 1. Global Reset & Variables */
 * {
   margin: 0;
   padding: 0;
@@ -7,29 +7,37 @@
   text-transform: uppercase;
 }
 
+:root {
+  --neon-green: #22c55e;
+  --dark-bg: #020617;
+  --slate-text: #94a3b8;
+  --border-color: #1e293b;
+  --glitch-red: #ef4444;
+}
+
 body {
-  background: #020617;
+  background: var(--dark-bg);
   color: #f8fafc;
-  padding-top: 100px;
+  padding-top: 110px; /* Space for the fixed HUD header */
   overflow-x: hidden;
 }
 
-/* 2. Professional Gaming Header with HUD Effects */
+/* 2. Professional Gaming Header (HUD) */
 .banner {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 90px;
-  background: rgba(2, 6, 23, 0.9); 
-  backdrop-filter: blur(8px);
+  background: rgba(2, 6, 23, 0.95); 
+  backdrop-filter: blur(10px);
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center; 
   padding: 0 40px;
-  border-bottom: 2px solid #1e293b;
+  border-bottom: 2px solid var(--border-color);
   z-index: 1000;
-  overflow: hidden; /* Keeps scanline inside banner */
+  overflow: hidden;
 }
 
 /* The Scanning HUD Animation */
@@ -48,7 +56,7 @@ body {
     transparent
   );
   animation: scan 4s linear infinite;
-  pointer-events: none; /* Allows clicking through it */
+  pointer-events: none;
 }
 
 @keyframes scan {
@@ -56,28 +64,26 @@ body {
   100% { left: 100%; }
 }
 
-/* 3. Logo & Navigation */
+/* 3. Navigation & Logo */
 .logo-container {
   position: absolute; 
   left: 40px;         
   display: flex;
   align-items: center;
-  z-index: 2;
 }
 
 .logo-container img {
-  height: 65px;
+  height: 55px;
   width: auto;
-  filter: drop-shadow(0 0 5px rgba(34, 197, 94, 0.3));
+  filter: drop-shadow(0 0 10px rgba(34, 197, 94, 0.4));
 }
 
 .button-group {
   display: flex;
-  gap: 5px;
-  z-index: 2;
+  gap: 10px;
 }
 
-/* 4. Square Gaming Buttons */
+/* 4. Universal Button Styling */
 .btn {
   display: inline-block;
   padding: 12px 28px;
@@ -88,28 +94,27 @@ body {
   border-radius: 0; 
   transition: all 0.2s ease;
   cursor: pointer;
+  text-align: center;
 }
 
 .btn-gaming {
-  color: #94a3b8;
+  color: var(--slate-text);
   background: rgba(30, 41, 59, 0.5);
   border: 1px solid #334155;
 }
 
 .btn-gaming:hover {
-  background: #0f172a; /* Darker background */
-  color: #22c55e;
-  border-color: #22c55e;
+  background: #0f172a;
+  color: var(--neon-green);
+  border-color: var(--neon-green);
   box-shadow: inset 0 0 15px rgba(34, 197, 94, 0.2);
 }
 
-/* Main Action Button */
 .btn-action {
-  margin-top: 40px;
-  background: #22c55e;
-  color: #020617;
+  background: var(--neon-green);
+  color: var(--dark-bg);
   border: none;
-  box-shadow: 4px 4px 0px #166534; /* Gaming "shadow" edge */
+  box-shadow: 4px 4px 0px #166534;
 }
 
 .btn-action:hover {
@@ -119,29 +124,146 @@ body {
   box-shadow: 0px 0px 0px #166534;
 }
 
-/* 5. Hero Section */
+/* 5. Mission Grid & Cards */
+.missions {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.mission-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  margin-top: 40px;
+}
+
+.card {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid var(--border-color);
+  padding: 25px;
+  text-align: left;
+  position: relative;
+  transition: border 0.3s ease;
+}
+
+.card:hover {
+  border-color: var(--neon-green);
+}
+
+.card h3 {
+  color: var(--neon-green);
+  font-size: 20px;
+  margin-bottom: 15px;
+  border-left: 4px solid var(--neon-green);
+  padding-left: 10px;
+}
+
+.card p {
+  color: var(--slate-text);
+  font-size: 14px;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+.card span {
+    color: #f8fafc;
+    font-weight: bold;
+}
+
+/* 6. Hero & Glitch Text Sections */
 .hero {
-  height: calc(100vh - 90px);
+  min-height: calc(100vh - 110px);
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  background: 
-    linear-gradient(rgba(2, 6, 23, 0.8), rgba(2, 6, 23, 0.8)),
-    url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070'); /* Gaming room bg */
+  background: linear-gradient(rgba(2, 6, 23, 0.85), rgba(2, 6, 23, 0.85)),
+              url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070');
   background-size: cover;
+  background-position: center;
+  padding: 40px 20px;
 }
 
-.hero h1 {
-  font-size: 100px;
+.glitch-text {
+  font-size: 60px;
   font-weight: 900;
   color: white;
-  letter-spacing: 15px;
-  text-shadow: 0 0 30px rgba(34, 197, 94, 0.5);
+  letter-spacing: 8px;
+  position: relative;
+  text-shadow: 0.05em 0 0 var(--glitch-red), 
+               -0.025em -0.05em 0 var(--neon-green);
+  animation: glitch 1.5s infinite;
+  margin-bottom: 10px;
 }
 
-.hero p {
-  font-size: 20px;
-  color: #94a3b8;
-  letter-spacing: 5px;
+@keyframes glitch {
+  0% { text-shadow: 0.05em 0 0 var(--glitch-red), -0.05em -0.025em 0 var(--neon-green); }
+  14% { text-shadow: 0.05em 0 0 var(--glitch-red), -0.05em -0.025em 0 var(--neon-green); }
+  15% { text-shadow: -0.05em -0.025em 0 var(--glitch-red), 0.025em 0.025em 0 var(--neon-green); }
+  49% { text-shadow: -0.05em -0.025em 0 var(--glitch-red), 0.025em 0.025em 0 var(--neon-green); }
+  50% { text-shadow: 0.025em 0.05em 0 var(--glitch-red), 0.05em 0 0 var(--neon-green); }
+  99% { text-shadow: 0.025em 0.05em 0 var(--glitch-red), 0.05em 0 0 var(--neon-green); }
+  100% { text-shadow: -0.025em 0 0 var(--glitch-red), -0.025em -0.025em 0 var(--neon-green); }
+}
+
+/* 7. Gaming Form Styling (New) */
+.mission-form {
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid var(--border-color);
+  padding: 40px;
+  width: 100%;
+  max-width: 600px;
+  margin-top: 30px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+  border-top: 4px solid var(--neon-green);
+}
+
+.input-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.input-group label {
+  display: block;
+  color: var(--neon-green);
+  font-size: 11px;
+  font-weight: 800;
+  margin-bottom: 8px;
+  letter-spacing: 2px;
+}
+
+.input-group input, 
+.input-group textarea {
+  width: 100%;
+  padding: 12px;
+  background: rgba(30, 41, 59, 0.5);
+  border: 1px solid var(--border-color);
+  color: white;
+  border-radius: 0;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.input-group input:focus, 
+.input-group textarea:focus {
+  border-color: var(--neon-green);
+  background: rgba(34, 197, 94, 0.05);
+  box-shadow: 0 0 10px rgba(34, 197, 94, 0.2);
+}
+
+.flex-row {
+  display: flex;
+  gap: 15px;
+}
+
+/* 8. Responsive Fixes */
+@media (max-width: 768px) {
+  .logo-container { position: static; margin-bottom: 15px; }
+  .banner { height: auto; flex-direction: column; padding: 20px; }
+  .glitch-text { font-size: 35px; }
+  .flex-row { flex-direction: column; gap: 0; }
+  .mission-form { padding: 20px; }
 }
