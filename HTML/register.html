@@ -47,7 +47,15 @@
             </div>
             <div style="flex: 2;">
                 <label for="mobile">[ MOBILE_FREQ ]</label>
-                <input type="tel" id="mobile" name="mobile" placeholder="+20 XXX XXX XXXX" required>
+                <input 
+                    type="tel" 
+                    id="mobile" 
+                    name="mobile" 
+                    placeholder="01XXXXXXXXX" 
+                    inputmode="numeric" 
+                    maxlength="11"
+                    oninput="this.value = this.value.replace(/[^0-9]/g, '');" 
+                    required>
             </div>
         </div>
     </div>
