@@ -302,3 +302,73 @@ body {
   .glitch-text { font-size: 40px; }
   .flex-row { flex-direction: column; }
 }
+/* 1. Global Reset & Variables */
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; text-transform: uppercase; }
+:root { --neon-green: #22c55e; --dark-bg: #020617; --slate-text: #94a3b8; --border-color: #1e293b; --glitch-red: #ef4444; }
+
+body { background: var(--dark-bg); color: #f8fafc; padding-top: 110px; overflow-x: hidden; display: flex; flex-direction: column; min-height: 100vh; }
+
+/* 2. Banner & Footer AURA (Restricted) */
+.banner, .footer-hud { position: relative; overflow: hidden; background: rgba(2, 6, 23, 0.98); border-bottom: 2px solid var(--border-color); }
+.banner { position: fixed; top: 0; width: 100%; height: 90px; z-index: 1000; display: flex; align-items: center; justify-content: center; }
+.footer-hud { border-top: 2px solid var(--border-color); padding: 25px 60px; margin-top: auto; }
+
+.scanline {
+    position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(34, 197, 94, 0.1), transparent);
+    animation: scan 4s linear infinite; pointer-events: none;
+}
+@keyframes scan { 0% { left: -100%; } 100% { left: 100%; } }
+
+/* 3. Hero & Home Elements */
+.hero { flex-grow: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: radial-gradient(circle, rgba(15, 23, 42, 0.7), var(--dark-bg)), url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070'); background-size: cover; padding: 40px 20px; }
+.hero-logo-center { margin-bottom: 20px; animation: logoPulse 4s infinite; }
+.main-glitch-logo { height: 160px; filter: drop-shadow(0 0 15px var(--neon-green)); }
+@keyframes logoPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+
+.slogan-visual { font-size: 22px; letter-spacing: 4px; color: var(--neon-green); margin-bottom: 25px; font-weight: 900; animation: flicker 3s infinite; }
+@keyframes flicker { 0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; } 20%, 22%, 24%, 55% { opacity: 0.5; } }
+
+/* 4. Typewriter Briefing - Plays Once on Load */
+.briefing-container { max-width: 550px; background: rgba(30, 41, 59, 0.5); border-left: 3px solid var(--neon-green); padding: 20px; margin-bottom: 30px; text-align: left; }
+.briefing-text { color: var(--slate-text); line-height: 1.6; font-size: 13px; letter-spacing: 1px; overflow: hidden; }
+.typewriter {
+    display: inline-block;
+    white-space: pre-wrap;
+    max-height: 0;
+    animation: typingOnce 2.5s steps(60, end) forwards;
+}
+@keyframes typingOnce { 
+    from { max-height: 0; } 
+    to { max-height: 1000px; } 
+}
+.status-blink { color: var(--neon-green); font-weight: bold; animation: blink 1s steps(2, start) infinite; }
+@keyframes blink { to { visibility: hidden; } }
+
+/* 5. Navigation & UI */
+.logo-container { position: absolute; left: 40px; }
+.logo-container img { height: 55px; }
+.button-group { display: flex; gap: 10px; }
+.btn { padding: 12px 28px; text-decoration: none; font-weight: 800; font-size: 13px; transition: 0.2s; cursor: pointer; }
+.btn-gaming { color: var(--slate-text); background: rgba(30, 41, 59, 0.5); border: 1px solid #334155; }
+.btn-gaming:hover { color: var(--neon-green); border-color: var(--neon-green); }
+.btn-action { background: var(--neon-green); color: var(--dark-bg); box-shadow: 4px 4px 0 #166534; }
+.btn-action:hover { transform: translate(2px, 2px); box-shadow: 0 0 0; }
+
+/* 6. Missions Grid (Restored) */
+.mission-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 40px; max-width: 1200px; margin-left: auto; margin-right: auto; padding: 20px; }
+.card { background: rgba(15, 23, 42, 0.6); border: 1px solid var(--border-color); padding: 25px; text-align: left; transition: 0.3s; }
+.card:hover { border-color: var(--neon-green); background: rgba(30, 41, 59, 0.3); }
+.card h3 { color: var(--neon-green); margin-bottom: 10px; border-left: 3px solid var(--neon-green); padding-left: 10px; }
+
+/* 7. Footer Layout Fixes */
+.footer-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+.contact-links { display: flex; flex-direction: column; gap: 10px; }
+.contact-item { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--slate-text); font-size: 11px; }
+.contact-item img { width: 14px; filter: invert(1) sepia(1) saturate(5) hue-rotate(90deg); }
+.credits { text-align: right; }
+.dev-tag { color: var(--neon-green); font-size: 9px; }
+.names { font-weight: 900; font-size: 13px; color: white; margin-top: 2px; }
+.copyright { font-size: 9px; color: #334155; }
+
+@media (max-width: 768px) { .footer-container { flex-direction: column; text-align: center; gap: 20px; } .contact-links, .credits { align-items: center; text-align: center; } .main-glitch-logo { height: 100px; } }
