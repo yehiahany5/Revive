@@ -422,3 +422,54 @@ body { background: var(--dark-bg); color: #f8fafc; padding-top: 110px; overflow-
     -2px 0 #00ffcc;
   font-style: italic;
 }
+/* 1. Make the Grid columns slightly narrower so boxes can be smaller */
+.mission-grid {
+    display: grid;
+    /* Changed 300px to 260px to allow smaller boxes */
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); 
+    gap: 20px;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+/* 2. Make the Card itself tighter (smaller box) */
+.card {
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid var(--border-color);
+    padding: 15px; /* Reduced from 25px to make it smaller */
+    text-align: left;
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Pushes footer to bottom if text varies */
+}
+
+/* 3. The New Footer Layout (Side-by-Side) */
+.mission-footer {
+    display: flex;             /* This aligns items in a row */
+    justify-content: space-between; /* Pushes text left, button right */
+    align-items: center;       /* Centers them vertically */
+    margin-top: 15px;          /* distinct separation from description */
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1); /* Optional divider line */
+}
+
+/* 4. Bigger, Bolder Location/Time Text */
+.mission-stats {
+    display: flex;
+    flex-direction: column;    /* Stacks the 3 lines of text */
+    gap: 4px;
+    
+    /* Text Sizing */
+    font-size: 0.95rem;        /* Increased size */
+    font-weight: 700;          /* Bolder */
+    color: var(--slate-text);
+    letter-spacing: 0.5px;
+}
+
+/* Optional: Make the icons/text pop with the theme color */
+.mission-stats span {
+    color: var(--neon-green); 
+    filter: brightness(1.2);
+}
