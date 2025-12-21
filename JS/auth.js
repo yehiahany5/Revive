@@ -40,27 +40,22 @@ form.addEventListener('submit', async (e) => {
     }
 });
 
-function closeModal() {
-    modal.style.display = 'none';
-    window.location.href = "index.html";
-}async function updateCapacity() {
+async function updateCapacity() {
+    // Select range 0-0 to get count without downloading all data
     const { count, error } = await _supabase
         .from('users')
-        .select('*', { count: 'exact', head: true });
+        .select('*', { count: 'exact' })
+        .range(0, 0); 
 
-    const display = document.getElementById('user-count');
-    
-    if (!error) {
-        display.innerText = count;
-        // Logic to disable form if full
-        if (count >= 15) {
-            document.getElementById('submit-btn').disabled = true;
-            document.getElementById('submit-btn').innerText = "CAPACITY_REACHED";
-        }
+    if (error) {
+        console.error("DB_ERROR:", error);
+        return;
     }
-}
 
-// Call on load
+    document.getElementById('user-count').innerText = count || 0;
+    const percentage = ((count || 0) / 15) * 100;
+    document.getElementById('progress-bar').style.width = percentage + '%';
+}
 updateCapacity();
 // ... (باقي الكود بتاعك زي ما هو)
 
