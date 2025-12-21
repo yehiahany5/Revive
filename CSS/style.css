@@ -459,10 +459,10 @@ body { background: var(--dark-bg); color: #f8fafc; padding-top: 110px; overflow-
 .mission-stats {
     display: flex;
     flex-direction: column;    /* Stacks the 3 lines of text */
-    gap: 6px;
+    gap: 4px;
     
     /* Text Sizing */
-    font-size: 0.99rem;        /* Increased size */
+    font-size: 0.95rem;        /* Increased size */
     font-weight: 700;          /* Bolder */
     color: var(--slate-text);
     letter-spacing: 0.5px;
