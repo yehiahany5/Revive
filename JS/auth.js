@@ -56,3 +56,4 @@ async function updateCapacity() {
     const percentage = ((count || 0) / 15) * 100;
     document.getElementById('progress-bar').style.width = percentage + '%';
 }
+updateCapacity();
