@@ -40,25 +40,21 @@ form.addEventListener('submit', async (e) => {
     }
 });
 
-function closeModal() {
-    modal.style.display = 'none';
-    window.location.href = "index.html";
-}async function updateCapacity() {
-    const { count, error } = await _supabase
-        .from('users')
-        .select('*', { count: 'exact', head: true });
+async function updateCapacity() {
+    try {
+        const { count, error } = await _supabase
+            .from('users')
+            .select('*', { count: 'exact', head: true });
 
-    const display = document.getElementById('user-count');
-    
-    if (!error) {
-        display.innerText = count;
-        // Logic to disable form if full
-        if (count >= 15) {
-            document.getElementById('submit-btn').disabled = true;
-            document.getElementById('submit-btn').innerText = "CAPACITY_REACHED";
-        }
+        if (error) throw error;
+
+        // Update UI
+        document.getElementById('user-count').innerText = count;
+        const percentage = (count / 15) * 100;
+        document.getElementById('progress-bar').style.width = percentage + '%';
+
+    } catch (err) {
+        console.error("SYNC_ERROR:", err.message);
+        document.getElementById('user-count').innerText = "OFFLINE";
     }
 }
-
-// Call on load
-updateCapacity();
