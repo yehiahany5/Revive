@@ -104,56 +104,83 @@
     </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <script>
+    // INITIALIZE MAINFRAME
+    const _supabase = supabase.createClient(
+        'https://whcklexzbxyylbiuwtcp.supabase.co', 
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndoY2tsZXh6Ynh5eWxiaXV3dGNwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjYyODgwMTgsImV4cCI6MjA4MTg2NDAxOH0.HnnpiGOPgPZHN6WzGYnwkD6BErHj1BsMFjGaruvwXf4'
+    );
+
     const form = document.getElementById('registration-form');
     const btn = document.getElementById('submit-btn');
 
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
         
-        // Visual feedback for the "gamer" feel
         btn.innerText = "UPLOADING_TO_MAINFRAME...";
-        btn.style.opacity = "0.5";
+        btn.disabled = true;
 
         const formData = new FormData(form);
-        const data = Object.fromEntries(formData);
+        const userData = Object.fromEntries(formData);
 
         try {
-            // This points to your Netlify Function where the Neon 'sql' code lives
-            const response = await fetch('/.netlify/functions/register', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(data),
-            });
+            // DIRECT INSERT TO SUPABASE
+            const { error } = await _supabase
+                .from('users')
+                .insert([userData], { returning: 'minimal' });
 
-            if (response.ok) {
-                btn.innerText = "ACCESS_GRANTED";
-                btn.style.backgroundColor = "#00ffcc";
-                alert("MISSION INITIALIZED: Welcome to the team.");
-                window.location.href = "index.html"; 
-            } else {
-                throw new Error('Connection Lost');
-            }
+            if (error) throw error;
+
+            // SUCCESS: SHOW GLITCH MODAL
+            document.getElementById('glitch-modal').style.display = 'flex';
+            form.reset();
+            btn.innerText = "INITIALIZE_REGISTRATION";
+
         } catch (error) {
+            console.error("CRITICAL_FAILURE:", error.message);
             btn.innerText = "SYSTEM_FAILURE";
             btn.style.backgroundColor = "#ff0055";
-            alert("CRITICAL ERROR: Could not sync with database.");
+            alert("DB_SYNC_ERROR: Check RLS Policies.");
         } finally {
-            btn.style.opacity = "1";
+            btn.disabled = false;
         }
     });
-    
+
+    function closeModal() {
+        document.getElementById('glitch-modal').style.display = 'none';
+        window.location.href = "index.html";
+    }
 </script>
 <div id="glitch-modal" class="modal-overlay">
-    <div class="modal-content">
-        <div class="glitch-layers">
-            <div class="glitch-text">ACCESS GRANTED</div>
-            <div class="glitch-text">ACCESS GRANTED</div>
-            <div class="glitch-text">ACCESS GRANTED</div>
+        <div class="modal-content">
+            <h2 class="glitch-title">ACCESS GRANTED</h2>
+            <p class="status-text">MAINFRAME_SYNC: 100% COMPLETE</p>
+            <button onclick="closeModal()" class="glitch-btn">RETURN TO INTERFACE</button>
         </div>
-        <p class="modal-subtext">MAINFRAME_SYNC_SUCCESSFUL...</p>
-        <button onclick="closeModal()" class="modal-btn">RETURN TO MISSION</button>
     </div>
-</div>
+
+    <style>
+        .modal-overlay {
+            display: none; /* This makes the text disappear until needed */
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+        }
+        /* ... add the rest of the CSS I gave you here ... */
+    </style>
+
+    <script>
+        function closeModal() {
+            document.getElementById('glitch-modal').style.display = 'none';
+        }
+
+        // Your existing form submission code goes here
+    </script>
 </body>
 </html>
