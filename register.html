@@ -144,31 +144,5 @@
     });
     
 </script>
-<script>
-const form = document.getElementById('registration-form');
-
-form.addEventListener('submit', async (e) => {
-    e.preventDefault(); // Stop page from refreshing
-    
-    const formData = new FormData(form);
-    const data = Object.fromEntries(formData); // Converts form to a clean JSON object
-
-    try {
-        const response = await fetch('/.netlify/functions/register', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data), // Sends the form data to your JS function
-        });
-
-        if (response.ok) {
-            alert("ACCESS GRANTED: Data synced with mainframe.");
-        } else {
-            alert("SYSTEM ERROR: Check terminal logs.");
-        }
-    } catch (err) {
-        console.error("Connection failed:", err);
-    }
-});
-</script>
 </body>
 </html>
