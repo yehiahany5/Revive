@@ -41,20 +41,18 @@ form.addEventListener('submit', async (e) => {
 });
 
 async function updateCapacity() {
-    try {
-        const { count, error } = await _supabase
-            .from('users')
-            .select('*', { count: 'exact', head: true });
+    // Select range 0-0 to get count without downloading all data
+    const { count, error } = await _supabase
+        .from('users')
+        .select('*', { count: 'exact' })
+        .range(0, 0); 
 
-        if (error) throw error;
-
-        // Update UI
-        document.getElementById('user-count').innerText = count;
-        const percentage = (count / 15) * 100;
-        document.getElementById('progress-bar').style.width = percentage + '%';
-
-    } catch (err) {
-        console.error("SYNC_ERROR:", err.message);
-        document.getElementById('user-count').innerText = "OFFLINE";
+    if (error) {
+        console.error("DB_ERROR:", error);
+        return;
     }
+
+    document.getElementById('user-count').innerText = count || 0;
+    const percentage = ((count || 0) / 15) * 100;
+    document.getElementById('progress-bar').style.width = percentage + '%';
 }
