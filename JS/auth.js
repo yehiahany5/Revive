@@ -62,3 +62,42 @@ function closeModal() {
 
 // Call on load
 updateCapacity();
+// ... (باقي الكود بتاعك زي ما هو)
+
+// 1. دي دالة جديدة هنشغلها أول ما الصفحة تفتح
+function checkRegistrationStatus() {
+    // بنسأل المتصفح: هل المستخدم ده سجل قبل كدة؟
+    if (localStorage.getItem('mission_status') === 'completed') {
+        // لو أيوة، نخفي الفورم ونظهر الرسالة علطول
+        form.style.display = 'none'; // نخفي الفورم
+        document.querySelector('.hero-header').style.display = 'none'; // نخفي العنوان لو حابب
+        
+        // نغير محتوى المودال ونظهره
+        const modalContent = document.querySelector('.modal-content');
+        modalContent.innerHTML = `
+            <h2 class="glitch-title">MISSION ACTIVE</h2>
+            <p class="status-text">AGENT ALREADY REGISTERED. AWAITING INSTRUCTIONS.</p>
+            <p style="color: var(--slate-text); font-size: 12px; margin-top: 10px;">(IDENTITY CONFIRMED)</p>
+        `;
+        modal.style.display = 'flex'; // نظهر المودال
+    }
+}
+
+// نشغل الدالة دي علطول
+checkRegistrationStatus();
+
+form.addEventListener('submit', async (e) => {
+    // ... (نفس الكود القديم بتاعك لحد ما نوصل للنجاح)
+
+        if (error) throw error;
+
+        // SUCCESS_SEQUENCE
+        // 2. هنا بنحفظ العلامة في المتصفح
+        localStorage.setItem('mission_status', 'completed'); 
+        
+        modal.style.display = 'flex';
+        form.reset();
+        // ...
+});
+
+// ...
