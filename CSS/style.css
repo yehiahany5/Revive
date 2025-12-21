@@ -372,3 +372,28 @@ body { background: var(--dark-bg); color: #f8fafc; padding-top: 110px; overflow-
 .copyright { font-size: 9px; color: #334155; }
 
 @media (max-width: 768px) { .footer-container { flex-direction: column; text-align: center; gap: 20px; } .contact-links, .credits { align-items: center; text-align: center; } .main-glitch-logo { height: 100px; } }
+.names {
+  font-family: 'Courier New', Courier, monospace; /* Or your favorite gaming font */
+  color: #fff;
+}
+
+.glitch-link {
+  color: #00ffcc; /* Neon cyan */
+  text-decoration: none;
+  position: relative;
+  transition: 0.2s;
+}
+
+/* The separator stays static or a different color */
+.separator {
+  color: #00ffcc; /* Neon pink */
+  margin: 0 10px;
+}
+
+/* Hover effect: Subtle "glitch" shift */
+.glitch-link:hover {
+  text-shadow: 
+    2px 0 #ff0055, 
+    -2px 0 #00ffcc;
+  font-style: italic;
+}
