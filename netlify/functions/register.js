@@ -1,36 +1,50 @@
-import { neon } from '@netlify/neon';
+const express = require('express');
+const { neon } = require('@neondatabase/serverless'); // Updated library name
+const cors = require('cors');
+const app = express();
 
-export const handler = async (event) => {
-  // 1. Only allow POST requests (sending data)
-  if (event.httpMethod !== "POST") {
-    return { statusCode: 405, body: "Method Not Allowed" };
-  }
+// 1. SETUP: Middleware
+app.use(cors()); // Critical: Allows your GitHub Pages site to talk to this server
+app.use(express.json()); // Allows the server to read the JSON data from your form
 
-  // 2. Initialize connection to Neon
-  // Make sure you have NETLIFY_DATABASE_URL set in your Netlify Environment Variables
-  const sql = neon(process.env.NETLIFY_DATABASE_URL);
+// 2. CONNECTION: Initialize Neon
+// We use DATABASE_URL which you will set in Render's Environment Variables
+const sql = neon(process.env.DATABASE_URL);
 
+// 3. LOGIC: The Registration Endpoint
+app.post('/register', async (req, res) => {
   try {
-    // 3. Parse the data sent from your form
-    const data = JSON.parse(event.body);
-    const { username, email, age, mobile, location, reason } = data;
+    // Extract data from the request body (sent by your HTML form)
+    const { username, email, age, mobile, location, reason } = req.body;
 
-    // 4. Insert data into your PostgreSQL table
-    // We use parameterized queries to stay safe from hackers
+    // Safety Check: Ensure required fields exist
+    if (!username || !email) {
+      return res.status(400).json({ status: "ERROR", message: "Missing required fields" });
+    }
+
+    // SQL Injection safe insertion
     await sql`
       INSERT INTO users (username, email, age, mobile, location, reason)
       VALUES (${username}, ${email}, ${age}, ${mobile}, ${location}, ${reason})
     `;
 
-    return {
-      statusCode: 200,
-      body: JSON.stringify({ status: "SUCCESS", message: "Operator Registered" }),
-    };
+    // Send Success Response back to your Glitch Popup
+    res.json({ 
+      status: "SUCCESS", 
+      message: "Operator Registered" 
+    });
+
   } catch (error) {
     console.error("Database Error:", error);
-    return {
-      statusCode: 500,
-      body: JSON.stringify({ status: "ERROR", message: "System Glitch: Database Rejected Entry" }),
-    };
+    res.status(500).json({ 
+      status: "ERROR", 
+      message: "System Glitch: Database Rejected Entry" 
+    });
   }
-};
+});
+
+// 4. POWER UP: Listen on the port Render provides
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server activated on port ${PORT}`);
+});
