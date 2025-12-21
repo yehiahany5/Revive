@@ -95,4 +95,27 @@ form.addEventListener('submit', async (e) => {
         // ...
 });
 
-// ...
+function checkRegistrationStatus() {
+    if (localStorage.getItem('mission_status') === 'completed') {
+        form.style.display = 'none'; 
+        document.querySelector('.hero-header').style.display = 'none';
+        
+        const modalContent = document.querySelector('.modal-content');
+        modalContent.innerHTML = `
+            <h2 class="glitch-title">MISSION ACTIVE</h2>
+            <p class="status-text">AGENT ALREADY REGISTERED.</p>
+            
+            <button onclick="resetMission()" class="btn-gaming" style="margin-top: 15px; border-color: #ef4444; color: #ef4444;">
+                [ RESET_PROTOCOL ]
+            </button>
+        `;
+        modal.style.display = 'flex';
+    }
+}
+function resetMission() {
+    // 1. Delete the saved status
+    localStorage.removeItem('mission_status');
+    
+    // 2. Reload the page to start fresh
+    window.location.reload();
+}
