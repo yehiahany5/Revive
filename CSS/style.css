@@ -426,7 +426,7 @@ body { background: var(--dark-bg); color: #f8fafc; padding-top: 110px; overflow-
 .mission-grid {
     display: grid;
     /* Changed 300px to 260px to allow smaller boxes */
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); 
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); 
     gap: 20px;
     max-width: 1200px;
     margin: 40px auto;
