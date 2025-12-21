@@ -27,17 +27,11 @@
     <p class="status-blink">>> SECURE ENCRYPTED CHANNEL // DATA ENTRY REQUIRED</p>
   </div>
 
-  <form name="mission-application" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" action="/index.html?status=success" class="mission-form">
-    
-    <input type="hidden" name="form-name" value="mission-application" />
-
-    <p class="hidden" style="display:none;">
-        <label>Don’t fill this out: <input name="bot-field" /></label>
-    </p>
+  <form id="registration-form" class="mission-form">
     
     <div class="input-group">
-        <label for="fullname">[ OPERATOR_NAME ]</label>
-        <input type="text" id="fullname" name="full_name" placeholder="IDENTIFY YOURSELF..." required>
+        <label for="username">[ PLAYER_NAME ]</label>
+        <input type="text" id="username" name="username" placeholder="IDENTIFY YOURSELF..." required>
     </div>
 
     <div class="input-group">
@@ -76,7 +70,7 @@
         <textarea id="reason" name="reason" rows="4" placeholder="STATE YOUR OBJECTIVES..." required></textarea>
     </div>
 
-    <button type="submit" class="btn btn-action" style="width: 100%;">ENCRYPT & SUBMIT</button>
+    <button type="submit" id="submit-btn" class="btn btn-action" style="width: 100%;">INITIALIZE_REGISTRATION</button>
 
 </form>
 </section>
@@ -100,10 +94,78 @@
 
         <div class="footer-section credits">
             <p class="dev-tag">System Developed By:</p>
-            <p class="names">Yehia Hany Hassan // Abdelrahman Saeed</p>
+            <p class="names">
+                <a href="https://instagram.com/yehia_hany_profile" target="_blank" class="glitch-link">Yehia Hany Hassan</a>
+                <span class="separator">//</span>
+                <a href="https://instagram.com/abdelrahman_saeed_profile" target="_blank" class="glitch-link">Abdelrahman Saeed</a>
+            </p>
             <p class="copyright">&copy; 2025 REVIVE TACTICAL. ALL RIGHTS RESERVED.</p>
         </div>
     </div>
 </footer>
+
+<script>
+    const form = document.getElementById('registration-form');
+    const btn = document.getElementById('submit-btn');
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        // Visual feedback for the "gamer" feel
+        btn.innerText = "UPLOADING_TO_MAINFRAME...";
+        btn.style.opacity = "0.5";
+
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData);
+
+        try {
+            // This points to your Netlify Function where the Neon 'sql' code lives
+            const response = await fetch('/.netlify/functions/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data),
+            });
+
+            if (response.ok) {
+                btn.innerText = "ACCESS_GRANTED";
+                btn.style.backgroundColor = "#00ffcc";
+                alert("MISSION INITIALIZED: Welcome to the team.");
+                window.location.href = "index.html"; 
+            } else {
+                throw new Error('Connection Lost');
+            }
+        } catch (error) {
+            btn.innerText = "SYSTEM_FAILURE";
+            btn.style.backgroundColor = "#ff0055";
+            alert("CRITICAL ERROR: Could not sync with database.");
+        } finally {
+            btn.style.opacity = "1";
+        }
+    });
+</script>
+const form = document.getElementById('registration-form');
+
+form.addEventListener('submit', async (e) => {
+    e.preventDefault(); // Stop page from refreshing
+    
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData); // Converts form to a clean JSON object
+
+    try {
+        const response = await fetch('/.netlify/functions/register', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data), // Sends the form data to your JS function
+        });
+
+        if (response.ok) {
+            alert("ACCESS GRANTED: Data synced with mainframe.");
+        } else {
+            alert("SYSTEM ERROR: Check terminal logs.");
+        }
+    } catch (err) {
+        console.error("Connection failed:", err);
+    }
+});
 </body>
 </html>
