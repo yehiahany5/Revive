@@ -72,5 +72,67 @@
     </footer>
     </div>
 </footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+    // 2. الاتصال بقاعدة البيانات (نفس البيانات اللي في صفحة Register)
+    const _supabase = supabase.createClient(
+        'https://whcklexzbxyylbiuwtcp.supabase.co', 
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndoY2tsZXh6Ynh5eWxiaXV3dGNwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjYyODgwMTgsImV4cCI6MjA4MTg2NDAxOH0.HnnpiGOPgPZHN6WzGYnwkD6BErHj1BsMFjGaruvwXf4'
+    );
+
+    // 3. دالة لجلب العدد وتحديث الشاشة
+    async function updateMissionCount() {
+        const countElement = document.getElementById('user-count');
+        const joinBtn = document.querySelector('.btn-action'); // عشان نتحكم في الزرار لو العدد اكتمل
+
+        try {
+            // بنطلب من Supabase يعد الصفوف بس من غير ما يجيب البيانات نفسها (عشان السرعة)
+            const { count, error } = await _supabase
+                .from('users')
+                .select('*', { count: 'exact', head: true });
+
+            if (error) throw error;
+
+            // تحديث الرقم في الشاشة
+            if (countElement) {
+                countElement.innerText = count;
+
+                // (إضافي) لو العدد وصل 15 أو أكتر، نقفل التسجيل
+                if (count >= 15) {
+                    countElement.style.color = '#ef4444'; // لون أحمر
+                    countElement.innerText = "15 (FULL)";
+                    
+                    if (joinBtn) {
+                        joinBtn.innerText = "MISSION FULL";
+                        joinBtn.style.pointerEvents = "none"; // يمنع الضغط
+                        joinBtn.style.background = "#333";
+                        joinBtn.style.color = "#888";
+                        joinBtn.style.boxShadow = "none";
+                        joinBtn.href = "#";
+                    }
+                }
+            }
+
+        } catch (error) {
+            console.error("Error fetching count:", error);
+            countElement.innerText = "ERR";
+        }
+    }
+
+    // تشغيل الدالة أول ما الصفحة تفتح
+    updateMissionCount();
+
+    // (اختياري) تشغيل الـ Realtime عشان لو حد سجل والصفحة مفتوحة الرقم يزيد لوحده
+    _supabase
+        .channel('users')
+        .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'users' }, (payload) => {
+            console.log('New player joined!');
+            updateMissionCount(); // عيد الحساب تاني
+        })
+        .subscribe();
+</script>
+</body>
+</html>
 </body>
 </html>
