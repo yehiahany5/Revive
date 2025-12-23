@@ -34,7 +34,7 @@
                 <div class="mission-details">
                     <p><span>Location:</span> Eithar Orphanage</p>
                     <p><span>Time:</span> Thursday – 5 PM</p>
-                    <p class="status-blink">>> CAPACITY: <span id="user-count">0</span> / 15 OPERATIVES</p>
+                    <p class="status-blink">>> CAPACITY: <span id="user-count">0</span> / 100 OPERATIVES</p>
                 </div>
                 <a class="btn btn-action" href="register.html">Join Mission</a>
             </div>
@@ -101,7 +101,7 @@
                 // (إضافي) لو العدد وصل 15 أو أكتر، نقفل التسجيل
                 if (count >= 100) {
                     countElement.style.color = '#ef4444'; // لون أحمر
-                    countElement.innerText = "15 (FULL)";
+                    countElement.innerText = "100 (FULL)";
                     
                     if (joinBtn) {
                         joinBtn.innerText = "MISSION FULL";
