@@ -476,3 +476,92 @@ body { background: var(--dark-bg); color: #f8fafc; padding-top: 110px; overflow-
     color: var(--neon-green); 
     filter: brightness(1.2);
 }
+/* =========================================
+   MODAL & GLITCH BUTTON STYLES
+   ========================================= */
+
+/* تحسين شكل المربع نفسه */
+.modal-content {
+    background: rgba(2, 6, 23, 0.95); /* خلفية غامقة شفافة شوية */
+    border: 1px solid #00f3ff; /* حدود سماوي */
+    padding: 50px;
+    text-align: center;
+    box-shadow: 0 0 50px rgba(0, 243, 255, 0.15); /* إضاءة خفيفة ورا المربع */
+    position: relative;
+    overflow: hidden;
+    max-width: 500px;
+    width: 90%;
+}
+
+/* تنسيق العنوان */
+.glitch-title {
+    color: #fff;
+    font-size: 3rem;
+    font-weight: 900;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 0px #ff0055, -2px -2px 0px #00f3ff;
+    letter-spacing: 5px;
+}
+
+/* تنسيق النص الصغير تحت العنوان */
+.status-text {
+    color: #00f3ff;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    margin-bottom: 40px;
+    letter-spacing: 2px;
+    opacity: 0.8;
+}
+
+/* ===========================
+   THE NEW BUTTON STYLE
+   =========================== */
+.glitch-btn {
+    position: relative;
+    background: transparent;
+    color: #00f3ff; /* لون النص سماوي */
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 15px 40px;
+    border: 1px solid #00f3ff;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(0, 243, 255, 0.1);
+    z-index: 1;
+}
+
+/* تأثير لما الماوس ييجي عليه */
+.glitch-btn:hover {
+    background: #00f3ff; /* الخلفية تبقى سماوي */
+    color: #000; /* النص يسود */
+    box-shadow: 
+        0 0 20px #00f3ff, 
+        0 0 40px rgba(0, 243, 255, 0.4);
+    transform: scale(1.05); /* يكبر سنة بسيطة */
+    border-color: #fff;
+}
+
+/* خط ضوء بيعدي بسرعة جوه الزرار */
+.glitch-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+    transition: none;
+    z-index: -1;
+}
+
+.glitch-btn:hover::before {
+    animation: flashPass 0.4s;
+}
+
+@keyframes flashPass {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
