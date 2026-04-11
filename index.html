@@ -1,31 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"><title>REVIVE | HOME</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REVIVE | HOME</title>
     <link rel="stylesheet" href="CSS/style.css">
 </head>
 <body>
+
     <header class="banner">
         <div class="scanline"></div>
-        <div class="logo-container"><img src="Images/logo2.png" height="55"></div>
+        
         <nav class="button-group">
-            <a href="index.html" class="btn btn-gaming">HOME</a>
-            <a href="missions.html" class="btn btn-gaming">MISSIONS</a>
+            <a href="about_us.html" class="btn btn-gaming">ABOUT US</a>
+            <a href="sponsors.html" class="btn btn-gaming">SPONSORS</a>
         </nav>
+
+        <div class="logo-container">
+            <a href="index.html">
+                <img src="Images/logo2.png" alt="REVIVE" height="55">
+            </a>
+        </div>
     </header>
 
     <section class="hero">
-        <img src="Images/logo2.png" alt="Logo" class="main-glitch-logo" style="height: 150px; margin-bottom: 20px;">
-        <h1 class="glitch-text">REVIVE TACTICAL</h1>
-        <p style="color: var(--neon-green); margin-bottom: 30px; letter-spacing: 5px;">EST. 2025 // ALEXANDRIA</p>
-        <a href="missions.html" class="btn btn-action">ENTER SYSTEM</a>
+        <div class="hero-content" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+            <div class="hero-logo-center">
+                <img src="Images/logo2.png" alt="Logo" class="main-glitch-logo" style="height: 200px; filter: drop-shadow(0 0 15px var(--neon-green));">
+            </div>
+            
+            <a href="about_us.html" class="btn btn-action" style="margin-top: 40px;">ENTER SYSTEM</a>
+        </div>
     </section>
 
     <footer class="footer-hud">
-        <div class="footer-container" style="display: flex; justify-content: space-between; width: 100%; max-width: 1200px; margin: 0 auto;">
-            <p class="names">YEHIA HANY // ABDELRAHMAN SAEED</p>
-            <p class="copyright">&copy; 2025 REVIVE. ALL RIGHTS RESERVED.</p>
+        <div class="footer-container" style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto;">
+            <div class="footer-section">
+                <p class="names">YEHIA HANY // ABDELRAHMAN SAEED</p>
+            </div>
+            <div class="footer-section" style="text-align: right;">
+                <p class="copyright">&copy; 2026 REVIVE TACTICAL. ALL RIGHTS RESERVED.</p>
+            </div>
         </div>
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="JS/app.js"></script>
+
 </body>
 </html>
