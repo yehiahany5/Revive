@@ -37,13 +37,21 @@ body {
   display: flex; 
   align-items: center; 
   justify-content: center; /* This keeps buttons centered */
+  padding: 0 40px;
 }
 
+/* LOGO MOVED TO LEFT & SIZED UP 15% (63px) */
 .logo-container {
   position: absolute;
-  right: 40px; /* Pins the logo Home-button to the right */
-  top: 18px;
+  left: 40px; /* Struck to the left */
+  top: 13px;  /* Adjusted for new height */
   z-index: 1001;
+}
+
+.logo-container img {
+  height: 63px; /* 15% larger than original 55px */
+  width: auto;
+  display: block;
 }
 
 .footer-hud { border-top: 2px solid var(--border-color); padding: 25px 60px; margin-top: auto; }
