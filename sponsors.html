@@ -6,35 +6,13 @@
     <link rel="stylesheet" href="CSS/style.css">
     <style>
         .sponsor-tier {
-            background: rgba(15, 23, 42, 0.9);
-            border: 1px solid var(--border-color);
-            padding: 40px;
-            width: 100%;
-            max-width: 800px;
-            margin-top: 20px;
-            border-left: 4px solid var(--neon-cyan);
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
+            background: rgba(15, 23, 42, 0.9); border: 1px solid var(--border-color);
+            padding: 40px; width: 100%; max-width: 800px; margin-top: 20px;
+            border-left: 4px solid var(--neon-cyan); display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;
         }
         .sponsor-logo {
-            width: 150px;
-            height: 80px;
-            background: #0f172a;
-            border: 1px solid #1e293b;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--slate-text);
-            font-size: 10px;
-            filter: grayscale(1);
-            transition: 0.3s;
-        }
-        .sponsor-logo:hover {
-            filter: grayscale(0);
-            border-color: var(--neon-green);
-            color: white;
+            width: 150px; height: 80px; background: #0f172a; border: 1px solid #1e293b;
+            display: flex; align-items: center; justify-content: center; color: var(--slate-text); font-size: 10px;
         }
     </style>
 </head>
@@ -45,32 +23,26 @@
             <a href="index.html" class="btn btn-gaming">HOME</a>
             <a href="about_us.html" class="btn btn-gaming">ABOUT US</a>
         </nav>
+        <div class="logo-container">
+            <a href="index.html"><img src="Images/logo2.png" height="55"></a>
+        </div>
     </header>
 
     <section class="hero">
         <h1 class="glitch-text">OUR ALLIES</h1>
-        
         <div class="sponsor-tier">
-            <h2 style="width: 100%; color: var(--neon-green); font-size: 14px; letter-spacing: 3px;">[ ELITE SPONSORS ]</h2>
+            <h2 style="width: 100%; color: var(--neon-green); font-size: 14px;">[ ELITE SPONSORS ]</h2>
             <div class="sponsor-logo">LOGO_01</div>
             <div class="sponsor-logo">LOGO_02</div>
             <div class="sponsor-logo">LOGO_03</div>
         </div>
-
-        <div class="sponsor-tier" style="border-left-color: var(--slate-text); margin-bottom: 40px;">
-            <h2 style="width: 100%; color: var(--slate-text); font-size: 14px; letter-spacing: 3px;">[ STRATEGIC PARTNERS ]</h2>
-            <div class="sponsor-logo">PARTNER_A</div>
-            <div class="sponsor-logo">PARTNER_B</div>
-        </div>
-
-        <a href="mailto:contact@revive.com" class="btn btn-action">BECOME A SPONSOR</a>
+        <a href="mailto:contact@revive.com" class="btn btn-action" style="margin-top: 30px;">BECOME A SPONSOR</a>
     </section>
 
     <footer class="footer-hud">
-        <div class="scanline"></div>
         <div class="footer-container" style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto;">
             <p class="names">REVIVE // SPONSORSHIP HUB</p>
-            <p class="copyright">&copy; 2026. SECURE CONNECTION.</p>
+            <p class="copyright">&copy; 2026.</p>
         </div>
     </footer>
 </body>
