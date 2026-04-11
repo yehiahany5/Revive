@@ -27,14 +27,19 @@
             align-items: center;
             justify-content: center;
             color: var(--slate-text);
-            font-size: 10px;
             filter: grayscale(1);
             transition: 0.3s;
         }
         .sponsor-logo:hover {
             filter: grayscale(0);
             border-color: var(--neon-green);
-            color: white;
+        }
+        
+        /* هذا الكود الجديد لضبط مقاس الصور داخل المربع */
+        .sponsor-logo img {
+            max-width: 80%;
+            max-height: 80%;
+            object-fit: contain;
         }
     </style>
 </head>
@@ -52,15 +57,16 @@
         
         <div class="sponsor-tier">
             <h2 style="width: 100%; color: var(--neon-green); font-size: 14px; letter-spacing: 3px;">[ ELITE SPONSORS ]</h2>
-            <div class="sponsor-logo">LOGO_01</div>
-            <div class="sponsor-logo">LOGO_02</div>
-            <div class="sponsor-logo">LOGO_03</div>
+            <div class="sponsor-logo"><img src="Images/baheya.png" alt="Logo 01"></div>
+            <div class="sponsor-logo"><img src="Images/HammamGym.png" alt="Logo 02"></div>
+            <div class="sponsor-logo"><img src="Images/c5Gym.png" alt="Logo 03"></div>
         </div>
 
         <div class="sponsor-tier" style="border-left-color: var(--slate-text); margin-bottom: 40px;">
             <h2 style="width: 100%; color: var(--slate-text); font-size: 14px; letter-spacing: 3px;">[ STRATEGIC PARTNERS ]</h2>
-            <div class="sponsor-logo">PARTNER_A</div>
-            <div class="sponsor-logo">PARTNER_B</div>
+            <div class="sponsor-logo"><img src="Images/eliteGYM.png" alt="Partner A"></div>
+            <div class="sponsor-logo"><img src="Images/CityToys.png" alt="Partner B"></div>
+            <div class="sponsor-logo"><img src="Images/sayadPharmacy.png" alt="Partner C"></div>
         </div>
 
         <a href="mailto:contact@revive.com" class="btn btn-action">BECOME A SPONSOR</a>
