@@ -6,15 +6,67 @@
     <link rel="stylesheet" href="CSS/style.css">
     <style>
         .sponsor-tier {
-            background: rgba(15, 23, 42, 0.9); border: 1px solid var(--border-color); padding: 40px;
-            width: 100%; max-width: 800px; margin-top: 20px; border-left: 4px solid var(--neon-cyan);
-            display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid var(--border-color);
+            padding: 40px;
+            width: 100%;
+            max-width: 900px; /* كبّرنا العرض شوية عشان يشيل صور أكتر */
+            margin-top: 20px;
+            border-left: 4px solid var(--neon-cyan);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px; /* مسافة أكبر بين العناصر */
+            justify-content: center;
+            margin-bottom: 50px;
         }
+
+        /* حاوية لكل سبونسر (الصورة + الاسم) */
+        .sponsor-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
+        }
+
         .sponsor-logo {
-            width: 150px; height: 80px; background: #0f172a; border: 1px solid #1e293b;
-            display: flex; align-items: center; justify-content: center; filter: grayscale(1); transition: 0.3s;
+            width: 180px; /* كبّرنا المربع شوية */
+            height: 100px;
+            background: #0f172a;
+            border: 1px solid #1e293b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            filter: grayscale(1);
+            transition: 0.3s;
         }
-        .sponsor-logo:hover { filter: grayscale(0); border-color: var(--neon-green); }
+
+        /* اسم السبونسر */
+        .sponsor-name {
+            color: var(--slate-text);
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        /* تأثير عند مرور الماوس على العنصر بالكامل */
+        .sponsor-item:hover .sponsor-logo {
+            filter: grayscale(0);
+            border-color: var(--neon-green);
+            transform: translateY(-5px); /* حركة خفيفة لفوق */
+        }
+
+        .sponsor-item:hover .sponsor-name {
+            color: var(--neon-green);
+        }
+        
+        .sponsor-logo img {
+            max-width: 85%;
+            max-height: 85%;
+            object-fit: contain;
+        }
     </style>
 </head>
 <body>
@@ -24,34 +76,53 @@
             <a href="index.html" class="btn btn-gaming">HOME</a>
             <a href="about_us.html" class="btn btn-gaming">ABOUT US</a>
         </nav>
-        <div class="logo-container">
-            <a href="index.html">
-                <img src="Images/logo2.png" alt="REVIVE" height="55">
-            </a>
-        </div>
     </header>
 
     <section class="hero">
-        <h1 class="glitch-text">OUR ALLIES</h1>
+        <h1 class="glitch-text">Thanks For Our Sponsors!!</h1>
+        
         <div class="sponsor-tier">
-            <h2 style="width: 100%; color: var(--neon-green); font-size: 14px; letter-spacing: 3px;">[ ELITE SPONSORS ]</h2>
-            <div class="sponsor-logo"><img src="Images/baheya.png" alt="Logo 01"></div>
-            <div class="sponsor-logo"><img src="Images/HammamGym.PNG" alt="Logo 02"></div>
-            <div class="sponsor-logo"><img src="Images/c5Gym.PNG" alt="Logo 03"></div>
+            <h2 style="width: 100%; color: var(--neon-green); font-size: 14px; letter-spacing: 3px; text-align: center; margin-bottom: 20px;">[ ELITE SPONSORS ]</h2>
+            
+            <div class="sponsor-item">
+                <div class="sponsor-logo"><img src="Images/baheya.png" alt="Baheya"></div>
+                <span class="sponsor-name">بهية</span>
+            </div>
+
+            <div class="sponsor-item">
+                <div class="sponsor-logo"><img src="Images/HammamGym.png" alt="Hammam Gym"></div>
+                <span class="sponsor-name">Hammam Gym</span>
+            </div>
+
+            <div class="sponsor-item">
+                <div class="sponsor-logo"><img src="Images/c5Gym.png" alt="C5 Gym"></div>
+                <span class="sponsor-name">C5 Gym</span>
+            </div>
+
+            <div class="sponsor-item">
+                <div class="sponsor-logo"><img src="Images/eliteGYM.png" alt="Elite Gym"></div>
+                <span class="sponsor-name">Elite Gym</span>
+            </div>
+
+            <div class="sponsor-item">
+                <div class="sponsor-logo"><img src="Images/CityToys.png" alt="City Toys"></div>
+                <span class="sponsor-name">City Toys</span>
+            </div>
+
+            <div class="sponsor-item">
+                <div class="sponsor-logo"><img src="Images/sayadPharmacy.png" alt="Sayad Pharmacy"></div>
+                <span class="sponsor-name">Sayad Pharmacy</span>
+            </div>
         </div>
-        <div class="sponsor-tier" style="border-left-color: var(--slate-text); margin-bottom: 40px;">
-            <h2 style="width: 100%; color: var(--slate-text); font-size: 14px; letter-spacing: 3px;">[ STRATEGIC PARTNERS ]</h2>
-            <div class="sponsor-logo"><img src="Images/eliteGYM.PNG" alt="Partner A"></div>
-            <div class="sponsor-logo"><img src="Images/CityToys.PNG" alt="Partner B"></div>
-            <div class="sponsor-logo"><img src="Images/sayadPharmacy.PNG" alt="Partner C"></div>
-        </div> 
-        <a href="mailto:contact@revive.com" class="btn btn-action">BECOME A SPONSOR!!</a>
+
+        <a href="mailto:contact@revive.com" class="btn btn-action">BECOME A SPONSOR</a>
     </section>
 
     <footer class="footer-hud">
+        <div class="scanline"></div>
         <div class="footer-container" style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto;">
             <p class="names">REVIVE // SPONSORSHIP HUB</p>
-            <p class="copyright">&copy; 2026.</p>
+            <p class="copyright">&copy; 2026. SECURE CONNECTION.</p>
         </div>
     </footer>
 </body>
