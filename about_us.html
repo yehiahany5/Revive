@@ -2,137 +2,53 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Missions | Revive</title>
+    <title>REVIVE | ABOUT US</title>
     <link rel="stylesheet" href="CSS/style.css">
 </head>
 <body>
-
     <header class="banner">
-        <div class="scanline"></div> 
-        
+        <div class="scanline"></div>
         <div class="logo-container">
-            <a href="index.html">
-            <img src="Images/logo2.png" alt="Revive Logo">
-            </a>
+            <a href="index.html"><img src="Images/logo2.png" height="55"></a>
         </div>
-  </div>
         <nav class="button-group">
-            <a href="index.html" class="btn btn-gaming">Home</a>
-            <a href="missions.html" class="btn btn-gaming">Missions</a>
+            <a href="index.html" class="btn btn-gaming">HOME</a>
+            <a href="about_us.html" class="btn btn-gaming">ABOUT US</a>
+            <a href="sponsors.html" class="btn btn-gaming">SPONSORS</a>
         </nav>
     </header>
 
-    <section class="missions">
-        <div class="hero-header">
-            <h1 class="glitch-text">Available Missions</h1>
-        </div>
-
+    <section class="hero" style="justify-content: flex-start; padding-top: 50px;">
+        <h1 class="glitch-text">OUR PROTOCOL</h1>
+        <p class="status-blink" style="margin-bottom: 30px;">>> INITIALIZING SYSTEM OVERVIEW...</p>
+        
         <div class="mission-grid">
             <div class="card">
-                <h3>Mission #01</h3>
-                <div class="mission-details">
-                    <p><span>Location:</span> Eithar Orphanage</p>
-                    <p><span>Time:</span> Thursday – 5 PM</p>
-                    <p class="status-blink">>> CAPACITY: <span id="user-count">0</span> / 100 OPERATIVES</p>
-                </div>
-                <a class="btn btn-action" href="register.html">Join Mission</a>
+                <h3>01. THE VISION</h3>
+                <p style="color: var(--slate-text); line-height: 1.6; text-transform: none;">
+                    Revive is a tactical community based in Alexandria, dedicated to bridging the gap between digital strategy and real-world impact.
+                </p>
             </div>
-
+            <div class="card">
+                <h3>02. THE SQUAD</h3>
+                <p style="color: var(--slate-text); line-height: 1.6; text-transform: none;">
+                    Founded by Yehia Hany and Abdelrahman Saeed, we operate as a collective of developers and enthusiasts.
+                </p>
             </div>
-    </section>
-<footer class="footer-hud">
-    <div class="scanline"></div> 
-    
-    <div class="footer-container">
-        <div class="footer-section">
-            
-            <div class="contact-links">
-                <a href="tel:+201000000000" class="contact-item">
-                    <img src="https://cdn-icons-png.flaticon.com/512/724/724664.png" alt="Phone Icon">
-                    <span>+20 1XX XXX XXXX</span>
-                </a>
-                <a href="https://instagram.com/yourpage" target="_blank" class="contact-item">
-                    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram Icon">
-                    <span>@REVIVE_OFFICIAL</span>
-                </a>
+            <div class="card">
+                <h3>03. THE IMPACT</h3>
+                <p style="color: var(--slate-text); line-height: 1.6; text-transform: none;">
+                    From charitable missions at Eithar to tech workshops, our objective is simple: Leave the server better than we found it.
+                </p>
             </div>
         </div>
+    </section>
 
-            <div class="footer-section credits">
-                <p class="dev-tag">System Developed By:</p>
-                <p class="names">
-  <a href="https://instagram.com/yehiaa.aa" target="_blank" class="glitch-link">Yehia Hany Hassan</a>
-  <span class="separator">//</span>
-  <a href="https://instagram.com/abdelrahmannsaeed" target="_blank" class="glitch-link">Abdelrahman Saeed</a>
-</p>
-                <p class="copyright">&copy; 2025 REVIVE TACTICAL. ALL RIGHTS RESERVED.</p>
-            </div>
+    <footer class="footer-hud">
+        <div class="footer-container" style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto;">
+            <p class="names">REVIVE TACTICAL // ALEXANDRIA HQ</p>
+            <p class="copyright">&copy; 2026. ALL RIGHTS RESERVED.</p>
         </div>
     </footer>
-    </div>
-</footer>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-<script>
-    // 2. الاتصال بقاعدة البيانات (نفس البيانات اللي في صفحة Register)
-    const _supabase = supabase.createClient(
-        'https://whcklexzbxyylbiuwtcp.supabase.co', 
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndoY2tsZXh6Ynh5eWxiaXV3dGNwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjYyODgwMTgsImV4cCI6MjA4MTg2NDAxOH0.HnnpiGOPgPZHN6WzGYnwkD6BErHj1BsMFjGaruvwXf4'
-    );
-
-    // 3. دالة لجلب العدد وتحديث الشاشة
-    async function updateMissionCount() {
-        const countElement = document.getElementById('user-count');
-        const joinBtn = document.querySelector('.btn-action'); // عشان نتحكم في الزرار لو العدد اكتمل
-
-        try {
-            // بنطلب من Supabase يعد الصفوف بس من غير ما يجيب البيانات نفسها (عشان السرعة)
-            const { count, error } = await _supabase
-                .from('users')
-                .select('*', { count: 'exact', head: true });
-
-            if (error) throw error;
-
-            // تحديث الرقم في الشاشة
-            if (countElement) {
-                countElement.innerText = count;
-
-                // (إضافي) لو العدد وصل 15 أو أكتر، نقفل التسجيل
-                if (count >= 100) {
-                    countElement.style.color = '#ef4444'; // لون أحمر
-                    countElement.innerText = "100 (FULL)";
-                    
-                    if (joinBtn) {
-                        joinBtn.innerText = "MISSION FULL";
-                        joinBtn.style.pointerEvents = "none"; // يمنع الضغط
-                        joinBtn.style.background = "#333";
-                        joinBtn.style.color = "#888";
-                        joinBtn.style.boxShadow = "none";
-                        joinBtn.href = "#";
-                    }
-                }
-            }
-
-        } catch (error) {
-            console.error("Error fetching count:", error);
-            countElement.innerText = "ERR";
-        }
-    }
-
-    // تشغيل الدالة أول ما الصفحة تفتح
-    updateMissionCount();
-
-    // (اختياري) تشغيل الـ Realtime عشان لو حد سجل والصفحة مفتوحة الرقم يزيد لوحده
-    _supabase
-        .channel('users')
-        .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'users' }, (payload) => {
-            console.log('New player joined!');
-            updateMissionCount(); // عيد الحساب تاني
-        })
-        .subscribe();
-</script>
-</body>
-</html>
 </body>
 </html>
