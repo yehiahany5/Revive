@@ -87,7 +87,7 @@ body {
 
 /* BIG CENTERED LOGO */
 .main-glitch-logo {
-    height: 350px; /* Significant size increase */
+    height: 250px; /* Significant size increase */
     width: auto;
     filter: drop-shadow(0 0 25px var(--neon-green));
     margin-bottom: 40px;
