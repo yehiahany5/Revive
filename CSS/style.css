@@ -55,7 +55,7 @@ body {
   position: relative;
   background: rgba(2, 6, 23, 0.98);
   border-top: 2px solid var(--border-color);
-  padding: 30px 60px;
+  padding: 17px 60px;
   margin-top: auto;
   z-index: 1000;
   overflow: hidden;
@@ -163,4 +163,48 @@ body {
     max-width: 80%;
     max-height: 80%;
     object-fit: contain;
+}
+
+/* --- VERTICAL SOCIAL STACK --- */
+.icon-stack {
+    display: flex;
+    flex-direction: column; /* Stacks them on top of each other */
+    gap: 12px; /* Space between the two rows */
+    margin-bottom: 10px;
+}
+
+.social-link {
+    display: flex;
+    align-items: center; /* Aligns icon and text vertically */
+    gap: 12px; /* Space between icon and name */
+    color: #f8fafc;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.social-link i {
+    font-size: 20px;
+    width: 25px; /* Keeps icons centered even if widths differ */
+    text-align: center;
+}
+
+.social-link span {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* Hover Effect */
+.social-link:hover {
+    color: var(--neon-green);
+    transform: translateX(5px); /* Slides right slightly on hover */
+    filter: drop-shadow(0 0 8px var(--neon-green));
+}
+
+.system-status {
+    font-size: 9px;
+    color: var(--neon-green);
+    letter-spacing: 2px;
+    opacity: 0.7;
+    margin-top: 5px;
 }
