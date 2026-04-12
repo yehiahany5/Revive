@@ -221,6 +221,10 @@ body {
 .theme-skills:hover { border-color: var(--neon-amber); box-shadow: 0 0 20px rgba(245, 158, 11, 0.2); }
 .theme-skills h3 { color: var(--neon-amber); }
 
+/* 5. Cyan (enjoy) */
+.theme-enjoy:hover { border-color: var(--neon-cyan); box-shadow: 0 0 20px rgba(0, 243, 255, 0.2); }
+.theme-enjoy h3 { color: var(--neon-cyan); }
+
 /* 4. Red (Events) */
 .theme-events:hover { border-color: var(--glitch-red); box-shadow: 0 0 20px rgba(239, 68, 68, 0.2); }
 .theme-events h3 { color: var(--glitch-red); }
