@@ -207,12 +207,33 @@ body {
     line-height: 1.5;
 }
 
-/* --- THEME VARIATIONS (Highlights) --- */
+/* 1. Volunteering - NEON BLUE */
+.theme-volunteering:hover { 
+    border-color: var(--neon-cyan); 
+    box-shadow: 0 0 20px rgba(0, 243, 255, 0.3); 
+}
+.theme-volunteering h3 { 
+    border-left-color: var(--neon-cyan); 
+    color: #f8fafc; 
+}
+.theme-volunteering:hover h3 { 
+    text-shadow: 0 0 10px var(--neon-cyan); 
+}
 
-/* 1. Green (Volunteering) */
-.theme-volunteering:hover { border-color: var(--neon-green); box-shadow: 0 0 20px rgba(34, 197, 94, 0.2); }
-.theme-volunteering h3 { color: var(--neon-green); }
+/* 2. Farfasha - NEON GREEN */
+.theme-farfasha:hover { 
+    border-color: #39ff14; 
+    box-shadow: 0 0 20px rgba(57, 255, 20, 0.3); 
+}
+.theme-farfasha h3 { 
+    border-left-color: #39ff14; 
+    color: #f8fafc; 
+}
+.theme-farfasha:hover h3 { 
+    text-shadow: 0 0 10px #39ff14; 
+}
 
+<<<<<<< HEAD
 /* 2. Cyan (Sports) */
 .theme-sports:hover { border-color: var(--neon-cyan); box-shadow: 0 0 20px rgba(0, 243, 255, 0.2); }
 .theme-sports h3 { color: var(--neon-cyan); }
@@ -228,7 +249,45 @@ body {
 /* 4. Red (Events) */
 .theme-events:hover { border-color: var(--glitch-red); box-shadow: 0 0 20px rgba(239, 68, 68, 0.2); }
 .theme-events h3 { color: var(--glitch-red); }
+=======
+/* 3. Skills - AMBER */
+.theme-skills:hover { 
+    border-color: var(--neon-amber); 
+    box-shadow: 0 0 20px rgba(245, 158, 11, 0.3); 
+}
+.theme-skills h3 { 
+    border-left-color: var(--neon-amber); 
+    color: #f8fafc; 
+}
+.theme-skills:hover h3 { 
+    text-shadow: 0 0 10px var(--neon-amber); 
+}
+>>>>>>> cf16c2dc6ec98f6fbb669c92a8dff75efc30aa84
 
+/* 4. Events - NEON PINK */
+.theme-events:hover { 
+    border-color: #ff00ff; 
+    box-shadow: 0 0 20px rgba(255, 0, 255, 0.3); 
+}
+.theme-events h3 { 
+    border-left-color: #ff00ff; 
+    color: #f8fafc; 
+}
+.theme-events:hover h3 { 
+    text-shadow: 0 0 10px #ff00ff; 
+}
+/* 5. Sports - NEON GREEN */
+.theme-sports:hover { 
+    border-color: #39ff14; 
+    box-shadow: 0 0 20px rgba(57, 255, 20, 0.3); 
+}
+.theme-sports h3 { 
+    border-left-color: #39ff14; 
+    color: #f8fafc; 
+}
+.theme-sports:hover h3 { 
+    text-shadow: 0 0 10px #39ff14; 
+}
 /* Global hover for images */
 .mission-card:hover .box-image img {
     filter: grayscale(0%) brightness(1);
