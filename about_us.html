@@ -2,66 +2,113 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>REVIVE | ABOUT US</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="CSS/style.css">
 </head>
 <body>
     <header class="banner">
         <div class="scanline"></div>
+        <div class="logo-container">
+            <a href="index.html">
+                <img src="Images/logo2.png" alt="REVIVE">
+            </a>
+        </div>
         <nav class="button-group">
             <a href="index.html" class="btn btn-gaming">HOME</a>
             <a href="sponsors.html" class="btn btn-gaming">SPONSORS</a>
         </nav>
-        <div class="logo-container">
-            <a href="index.html">
-                <img src="Images/logo2.png" alt="REVIVE" height="55">
-            </a>
-        </div>
     </header>
 
-    <section class="hero" style="justify-content: flex-start; padding-top: 50px;">
+    <section class="hero" style="min-height: 100vh; justify-content: center; padding: 120px 20px 60px 20px;">
         <h1 class="glitch-text">OUR MISSION</h1>
         
-            <div class="card" id="mission-card" style="max-width: 1000px; margin: 40px auto; padding: 40px; text-align: center;">
-    <h3 style="font-size: 28px; margin-bottom: 20px;">What do we do?</h3>
-    <p style="color: var(--slate-text); line-height: 1.8; text-transform: none; font-size: 20px;">
-        منصة بتشجّع الشباب يقللوا من وقت الألعاب الاكترونية ويستبدلوه بأنشطة مفيدة في الواقع التطبيق بيعتمد على تحديات يومية بنظام نقاط وجوائز علشان يحفّز المستخدمين يشاركوا ويستمروا.
-        <br><br>
-        بيركّز على أنشطة زي التطوع، الرياضة، تطوير المهارات، وحضور الفعاليات، وكمان بيساعد على تكوين علاقات اجتماعية من خلال التفاعل والمنافسة.
-        <br><br>
-        وفي المقابل، المستخدمين بيحصلوا على مكافآت مثل خصومات وكوبونات.
-        <br><br>
-        وهدفه الأساسي هو تقليل الإدمان على الألعاب وبناء جيل أكثر وعيًا ونشاطًا.
-    </p>
-</div>
-           
+        <div class="card" id="mission-card" style="max-width: 1000px; margin: 40px auto; padding: 40px; text-align: center; flex-shrink: 0; background: rgba(15, 23, 42, 0.9);">
+            <h3 style="font-size: 28px; margin-bottom: 20px;">What do we do?</h3>
+            <p style="color: var(--slate-text); line-height: 1.8; text-transform: none; font-size: 20px;">
+                منصة بتشجّع الشباب يقللوا من وقت الألعاب الاكترونية ويستبدلوه بأنشطة مفيدة في الواقع التطبيق بيعتمد على تحديات يومية بنظام نقاط وجوائز علشان يحفّز المستخدمين يشاركوا ويستمروا.
+                <br><br>
+                بيركّز على أنشطة زي التطوع، الرياضة، تطوير المهارات، وحضور الفعاليات، وكمان بيساعد على تكوين علاقات اجتماعية من خلال التفاعل والمنافسة.
+                <br><br>
+                وفي المقابل، المستخدمين بيحصلوا على مكافآت مثل خصومات وكوبونات.
+                <br><br>
+                وهدفه الأساسي هو تقليل الإدمان على الألعاب وبناء جيل أكثر وعيًا ونشاطًا.
+            </p>
+        </div>
+        
+        <button onclick="revealAndScroll()" class="btn btn-action">OUR SECTIONS</button>
+    </section>
+
+    <section id="categories-section" class="mission-briefing" style="display: none; padding: 100px 0; background: var(--dark-bg);">
+        <div class="mission-grid-compact">
+            <div class="mission-card theme-volunteering">
+                <div class="box-image"><img src="Images/img1.jpg" alt="Volunteering"></div>
+                <div class="box-content">
+                    <h3>VOLUNTEERING</h3>
+                    <p>Help your community and gain real-world XP.</p>
+                </div>
+            </div>
+
+            <div class="mission-card theme-sports">
+                <div class="box-image"><img src="Images/img2.jpg" alt="Sports"></div>
+                <div class="box-content">
+                    <h3>SPORTS</h3>
+                    <p>Level up your physical health daily.</p>
+                </div>
+            </div>
+
+            <div class="mission-card theme-skills">
+                <div class="box-image"><img src="Images/img3.jpg" alt="Skill Up"></div>
+                <div class="box-content">
+                    <h3>SKILL UP</h3>
+                    <p>Master new crafts and real-life tactics.</p>
+                </div>
+            </div>
+
+            <div class="mission-card theme-events">
+                <div class="box-image"><img src="Images/img4.jpg" alt="Events"></div>
+                <div class="box-content">
+                    <h3>EVENTS</h3>
+                    <p>Join tactical meetups and expand your network.</p>
+                </div>
+            </div>
         </div>
     </section>
 
-<footer class="footer-hud">
-    <div class="footer-container">
-        
-        <div class="footer-socials">
-            <div class="icon-stack">
-                <a href="https://www.instagram.com/Revive_xp/" target="_blank" class="social-link">
-                    <i class="fa-brands fa-instagram"></i>
-                    <span>REVIVE_XP</span>
-                </a>
-                <a href="https://www.facebook.com/search/top?q=revive%20eg" target="_blank" class="social-link">
-                    <i class="fa-brands fa-facebook-f"></i>
-                    <span>REVIVE EG</span>
-                </a>
+    <footer class="footer-hud">
+        <div class="footer-container">
+            <div class="footer-socials">
+                <div class="icon-stack">
+                    <a href="https://www.instagram.com/Revive_xp/" target="_blank" class="social-link">
+                        <i class="fa-brands fa-instagram"></i>
+                        <span>REVIVE_XP</span>
+                    </a>
+                    <a href="https://www.facebook.com/search/top?q=revive%20eg" target="_blank" class="social-link">
+                        <i class="fa-brands fa-facebook-f"></i>
+                        <span>REVIVE EG</span>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-contact">
+                <p>SYSTEM ACCESS: <a href="tel:+201000000000">+20 100 000 0000</a></p>
+                <p>ENCRYPTION: <a href="mailto:contact@revivetactical.com">CONTACT@REVIVETACTICAL.COM</a></p>
+                <p class="copyright">&copy; 2026 REVIVE TACTICAL.</p>
             </div>
         </div>
+    </footer>
 
-        <div class="footer-contact">
-            <p>SYSTEM ACCESS: <a href="tel:+201000000000">+20 100 000 0000</a></p>
-            <p>ENCRYPTION: <a href="mailto:contact@revivetactical.com">CONTACT@REVIVETACTICAL.COM</a></p>
-            <p class="copyright">&copy; 2026 REVIVE TACTICAL.</p>
-        </div>
-
-    </div>
-</footer>
+    <script>
+        function revealAndScroll() {
+            const section = document.getElementById('categories-section');
+            // Using flex ensures it centers correctly as per your CSS
+            section.style.display = 'flex'; 
+            
+            // Brief timeout ensures display is rendered before scrolling
+            setTimeout(() => {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }, 10);
+        }
+    </script>
 </body>
 </html>

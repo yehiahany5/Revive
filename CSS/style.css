@@ -6,6 +6,7 @@
   --border-color: #1e293b;
   --glitch-red: #ef4444;
   --neon-cyan: #00f3ff;
+  --neon-amber: #f59e0b;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; text-transform: uppercase; }
@@ -153,10 +154,80 @@ body {
   100% { text-shadow: -0.025em 0 0 var(--glitch-red), -0.025em -0.025em 0 var(--neon-green); }
 }
 
-/* --- CARDS & GRID --- */
-.mission-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; width: 100%; max-width: 1200px; margin: 40px auto; }
-.card { background: rgba(15, 23, 42, 0.9); border: 1px solid var(--border-color); padding: 20px; text-align: left; }
-.card h3 { color: var(--neon-green); margin-bottom: 10px; border-left: 3px solid var(--neon-green); padding-left: 10px; }
+/* --- COMPACT 2X2 MISSION GRID & THEMED HIGHLIGHTS --- */
+.mission-briefing {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+}
+
+.mission-grid-compact {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* FORCED 2X2 */
+    gap: 30px;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.mission-card {
+    background: rgba(15, 23, 42, 0.9);
+    border: 1px solid var(--border-color);
+    position: relative;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.box-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    filter: grayscale(100%) brightness(0.6);
+    transition: 0.4s ease;
+}
+
+.box-content {
+    padding: 25px;
+    border-top: 1px solid var(--border-color);
+}
+
+.box-content h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+
+.box-content p {
+    font-size: 12px;
+    color: var(--slate-text);
+    text-transform: none; /* Keeps paragraphs readable */
+    line-height: 1.5;
+}
+
+/* --- THEME VARIATIONS (Highlights) --- */
+
+/* 1. Green (Volunteering) */
+.theme-volunteering:hover { border-color: var(--neon-green); box-shadow: 0 0 20px rgba(34, 197, 94, 0.2); }
+.theme-volunteering h3 { color: var(--neon-green); }
+
+/* 2. Cyan (Sports) */
+.theme-sports:hover { border-color: var(--neon-cyan); box-shadow: 0 0 20px rgba(0, 243, 255, 0.2); }
+.theme-sports h3 { color: var(--neon-cyan); }
+
+/* 3. Amber (Skills) */
+.theme-skills:hover { border-color: var(--neon-amber); box-shadow: 0 0 20px rgba(245, 158, 11, 0.2); }
+.theme-skills h3 { color: var(--neon-amber); }
+
+/* 4. Red (Events) */
+.theme-events:hover { border-color: var(--glitch-red); box-shadow: 0 0 20px rgba(239, 68, 68, 0.2); }
+.theme-events h3 { color: var(--glitch-red); }
+
+/* Global hover for images */
+.mission-card:hover .box-image img {
+    filter: grayscale(0%) brightness(1);
+    transform: scale(1.05);
+}
 
 /* --- SPONSOR LOGO FIX --- */
 .sponsor-logo img {
@@ -168,15 +239,15 @@ body {
 /* --- VERTICAL SOCIAL STACK --- */
 .icon-stack {
     display: flex;
-    flex-direction: column; /* Stacks them on top of each other */
-    gap: 12px; /* Space between the two rows */
+    flex-direction: column;
+    gap: 12px;
     margin-bottom: 10px;
 }
 
 .social-link {
     display: flex;
-    align-items: center; /* Aligns icon and text vertically */
-    gap: 12px; /* Space between icon and name */
+    align-items: center;
+    gap: 12px;
     color: #f8fafc;
     text-decoration: none;
     transition: all 0.3s ease;
@@ -184,7 +255,7 @@ body {
 
 .social-link i {
     font-size: 20px;
-    width: 25px; /* Keeps icons centered even if widths differ */
+    width: 25px;
     text-align: center;
 }
 
@@ -194,10 +265,9 @@ body {
     letter-spacing: 1px;
 }
 
-/* Hover Effect */
 .social-link:hover {
     color: var(--neon-green);
-    transform: translateX(5px); /* Slides right slightly on hover */
+    transform: translateX(5px);
     filter: drop-shadow(0 0 8px var(--neon-green));
 }
 
@@ -207,4 +277,11 @@ body {
     letter-spacing: 2px;
     opacity: 0.7;
     margin-top: 5px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 850px) {
+    .mission-grid-compact {
+        grid-template-columns: 1fr; /* Stacks on mobile */
+    }
 }
